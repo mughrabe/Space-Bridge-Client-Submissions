@@ -1,196 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Space Bridge Technologies — Client Intake Form</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #F5F5F0;
-  --card: #FFFFFF;
-  --field: #F8F8F5;
-  --border: #E2E0DA;
-  --navy: #0F1B33;
-  --navy-mid: #1C2E50;
-  --gold: #B8943F;
-  --gold-dark: #9A7A30;
-  --gold-light: #D4B366;
-  --text: #1A1A1A;
-  --text-sub: #4A4A4A;
-  --text-muted: #8A8A82;
-  --accent: #F0EBE0;
-  --success: #2E7D4F;
-  --success-bg: #EDF7F0;
-  --font: 'Outfit', sans-serif;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: var(--font);
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  padding: 28px 16px;
-}
-
-.container {
-  background: var(--card);
-  border-radius: 18px;
-  padding: 36px 40px;
-  max-width: 700px;
-  width: 100%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 30px rgba(0,0,0,0.06);
-  border: 1px solid var(--border);
-  align-self: flex-start;
-}
-
-.header { text-align: center; margin-bottom: 30px; }
-.header img { height: 52px; margin-bottom: 12px; }
-.header .tagline { font-size: 12px; letter-spacing: 4px; color: var(--gold-dark); font-weight: 700; margin-bottom: 10px; }
-.header h1 { font-size: 28px; font-weight: 800; color: var(--navy); }
-.header p { color: var(--text-sub); font-size: 15px; margin-top: 10px; line-height: 1.6; max-width: 500px; margin-left: auto; margin-right: auto; }
-.header .note { color: var(--text-muted); font-size: 13px; margin-top: 8px; }
-
-/* Steps Navigation */
-.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 28px; }
-.step-btn {
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  padding: 14px 6px; border-radius: 12px; cursor: pointer;
-  border: 2px solid var(--border); background: var(--card);
-  font-family: var(--font); transition: all 0.2s;
-}
-.step-btn.active { border-color: var(--gold); background: var(--accent); }
-.step-btn.done { border-color: rgba(46,125,79,0.5); background: var(--success-bg); }
-.step-num {
-  width: 34px; height: 34px; border-radius: 9px;
-  background: var(--field); color: var(--text-muted);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 800; border: 1px solid var(--border);
-}
-.step-btn.active .step-num { background: var(--navy); color: white; border-color: var(--navy); }
-.step-btn.done .step-num { background: var(--success); color: white; border-color: var(--success); }
-.step-label { font-size: 12px; font-weight: 600; color: var(--text-muted); }
-.step-btn.active .step-label { color: var(--navy); }
-.step-btn.done .step-label { color: var(--success); }
-
-/* Stage Header */
-.stage-header {
-  display: flex; align-items: center; gap: 14px;
-  margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1.5px solid var(--border);
-}
-.stage-icon {
-  width: 48px; height: 48px; border-radius: 12px; background: var(--navy);
-  display: flex; align-items: center; justify-content: center;
-  border: 2px solid rgba(184,148,63,0.4); flex-shrink: 0;
-  color: var(--gold-light); font-size: 18px; font-weight: 800;
-}
-.stage-step { font-size: 11px; color: var(--text-muted); letter-spacing: 2.5px; text-transform: uppercase; font-weight: 700; }
-.stage-title { margin: 0; font-size: 20px; color: var(--navy); font-weight: 700; }
-
-/* Form Fields */
-.field { margin-bottom: 22px; }
-.field label { display: block; font-size: 13.5px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
-.field label .req { color: var(--gold); margin-left: 4px; }
-.field .hint { font-size: 12.5px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.5; }
-.field input, .field textarea, .field select {
-  width: 100%; padding: 12px 16px; border-radius: 10px;
-  border: 1.5px solid var(--border); font-size: 14.5px;
-  font-family: var(--font); color: var(--text); outline: none;
-  background: var(--field); transition: border-color 0.2s;
-}
-.field input:focus, .field textarea:focus, .field select:focus { border-color: var(--gold); }
-.field textarea { min-height: 100px; resize: vertical; }
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-/* Chips */
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-.chip {
-  padding: 9px 18px; border-radius: 8px; border: 1.5px solid var(--border);
-  background: white; color: var(--text-sub); font-size: 13.5px; font-weight: 400;
-  cursor: pointer; font-family: var(--font); transition: all 0.15s;
-}
-.chip.on { border-color: var(--gold); background: var(--accent); color: var(--navy-mid); font-weight: 600; }
-
-/* Checkboxes */
-.checks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-.check-chip {
-  padding: 9px 18px; border-radius: 8px; border: 1.5px solid var(--border);
-  background: white; color: var(--text-sub); font-size: 13.5px; cursor: pointer;
-  font-family: var(--font); transition: all 0.15s;
-}
-.check-chip.on { border-color: var(--gold); background: var(--accent); color: var(--navy-mid); font-weight: 600; }
-
-/* Buttons */
-.nav { display: flex; gap: 12px; margin-top: 28px; padding-top: 22px; border-top: 1.5px solid var(--border); }
-.nav .spacer { flex: 1; }
-.btn-primary {
-  padding: 13px 28px; border-radius: 10px; border: none;
-  background: var(--navy); color: white; font-size: 14.5px;
-  font-weight: 600; cursor: pointer; font-family: var(--font);
-}
-.btn-gold {
-  padding: 13px 28px; border-radius: 10px; border: none;
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: white;
-  font-size: 14.5px; font-weight: 700; cursor: pointer; font-family: var(--font);
-}
-.btn-outline {
-  padding: 12px 22px; border-radius: 10px; border: 1.5px solid var(--border);
-  background: white; color: var(--text-sub); font-size: 14px;
-  font-weight: 500; cursor: pointer; font-family: var(--font);
-}
-.btn-primary:disabled, .btn-gold:disabled { opacity: 0.6; cursor: not-allowed; }
-
-/* Stages */
-.stage { display: none; }
-.stage.active { display: block; }
-
-/* Thank you */
-.thankyou { display: none; text-align: center; padding: 40px 0; }
-.thankyou.active { display: block; }
-.thankyou .check-circle {
-  width: 80px; height: 80px; border-radius: 20px; background: var(--success-bg);
-  border: 2px solid var(--success); display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 24px; font-size: 36px; color: var(--success); font-weight: 800;
-}
-.thankyou h2 { font-size: 28px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
-.thankyou p { color: var(--text-sub); font-size: 16px; line-height: 1.7; max-width: 440px; margin: 0 auto 8px; }
-.thankyou .next-box {
-  background: var(--accent); border: 1px solid var(--border); border-radius: 12px;
-  padding: 18px 24px; max-width: 380px; margin: 24px auto; text-align: left;
-}
-.thankyou .next-box h4 { font-size: 12px; font-weight: 700; color: var(--gold-dark); letter-spacing: 2px; margin-bottom: 12px; }
-.thankyou .next-box p { font-size: 14px; color: var(--text-sub); line-height: 2; }
-
-/* Footer */
-.footer { text-align: center; margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--border); }
-.footer p { font-size: 12px; color: var(--text-muted); margin-top: 5px; }
-
-/* Error */
-.error-msg { color: #C0392B; font-size: 13px; margin-top: 16px; display: none; }
+:root { --bg:#F5F5F0;--card:#FFFFFF;--field:#F8F8F5;--border:#E2E0DA;--navy:#0F1B33;--navy-mid:#1C2E50;--gold:#B8943F;--gold-dark:#9A7A30;--gold-light:#D4B366;--text:#1A1A1A;--text-sub:#4A4A4A;--text-muted:#8A8A82;--accent:#F0EBE0;--success:#2E7D4F;--success-bg:#EDF7F0;--font:'Outfit',sans-serif; }
+html[dir="rtl"] { --font: 'Noto Sans Arabic', 'Outfit', sans-serif; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;display:flex;justify-content:center;padding:28px 16px}
+.container{background:var(--card);border-radius:18px;padding:36px 40px;max-width:700px;width:100%;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 8px 30px rgba(0,0,0,0.06);border:1px solid var(--border);align-self:flex-start;position:relative}
+/* Language Toggle */
+.lang-toggle{position:absolute;top:16px;right:16px;display:flex;border-radius:8px;overflow:hidden;border:1.5px solid var(--border)}
+html[dir="rtl"] .lang-toggle{right:auto;left:16px}
+.lang-btn{padding:8px 16px;border:none;cursor:pointer;font-family:var(--font);font-size:13px;font-weight:600;transition:all 0.15s;background:var(--card);color:var(--text-muted)}
+.lang-btn.active{background:var(--navy);color:white}
+.header{text-align:center;margin-bottom:30px}
+.header img{height:52px;margin-bottom:12px}
+.header .tagline{font-size:12px;letter-spacing:4px;color:var(--gold-dark);font-weight:700;margin-bottom:10px}
+.header h1{font-size:28px;font-weight:800;color:var(--navy)}
+.header p{color:var(--text-sub);font-size:15px;margin-top:10px;line-height:1.6;max-width:500px;margin-left:auto;margin-right:auto}
+.header .note{color:var(--text-muted);font-size:13px;margin-top:8px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:28px}
+.step-btn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:12px;cursor:pointer;border:2px solid var(--border);background:var(--card);font-family:var(--font);transition:all 0.2s}
+.step-btn.active{border-color:var(--gold);background:var(--accent)}
+.step-btn.done{border-color:rgba(46,125,79,0.5);background:var(--success-bg)}
+.step-num{width:34px;height:34px;border-radius:9px;background:var(--field);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;border:1px solid var(--border)}
+.step-btn.active .step-num{background:var(--navy);color:white;border-color:var(--navy)}
+.step-btn.done .step-num{background:var(--success);color:white;border-color:var(--success)}
+.step-label{font-size:12px;font-weight:600;color:var(--text-muted)}
+.step-btn.active .step-label{color:var(--navy)}
+.step-btn.done .step-label{color:var(--success)}
+.stage-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:18px;border-bottom:1.5px solid var(--border)}
+.stage-icon{width:48px;height:48px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;border:2px solid rgba(184,148,63,0.4);flex-shrink:0;color:var(--gold-light);font-size:18px;font-weight:800}
+.stage-step{font-size:11px;color:var(--text-muted);letter-spacing:2.5px;text-transform:uppercase;font-weight:700}
+.stage-title{margin:0;font-size:20px;color:var(--navy);font-weight:700}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:13.5px;font-weight:600;color:var(--navy);margin-bottom:5px}
+.field label .req{color:var(--gold);margin-left:4px}
+html[dir="rtl"] .field label .req{margin-left:0;margin-right:4px}
+.field .hint{font-size:12.5px;color:var(--text-muted);margin-bottom:8px;line-height:1.5}
+.field input,.field textarea,.field select{width:100%;padding:12px 16px;border-radius:10px;border:1.5px solid var(--border);font-size:14.5px;font-family:var(--font);color:var(--text);outline:none;background:var(--field);transition:border-color 0.2s}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold)}
+.field textarea{min-height:100px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.phone-row{display:flex;gap:8px}
+.phone-row select{width:140px;flex-shrink:0;padding:12px 8px;font-size:13px}
+.phone-row input{flex:1}
+.chips,.checks{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chip,.check-chip{padding:9px 18px;border-radius:8px;border:1.5px solid var(--border);background:white;color:var(--text-sub);font-size:13.5px;cursor:pointer;font-family:var(--font);transition:all 0.15s}
+.chip.on,.check-chip.on{border-color:var(--gold);background:var(--accent);color:var(--navy-mid);font-weight:600}
+.cert-other-input{display:none;margin-top:10px}
+.cert-other-input.visible{display:block}
+.nav{display:flex;gap:12px;margin-top:28px;padding-top:22px;border-top:1.5px solid var(--border)}
+.nav .spacer{flex:1}
+.btn-primary{padding:13px 28px;border-radius:10px;border:none;background:var(--navy);color:white;font-size:14.5px;font-weight:600;cursor:pointer;font-family:var(--font)}
+.btn-gold{padding:13px 28px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:white;font-size:14.5px;font-weight:700;cursor:pointer;font-family:var(--font)}
+.btn-outline{padding:12px 22px;border-radius:10px;border:1.5px solid var(--border);background:white;color:var(--text-sub);font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font)}
+.btn-primary:disabled,.btn-gold:disabled{opacity:0.6;cursor:not-allowed}
+.stage{display:none}.stage.active{display:block}
+.thankyou{display:none;text-align:center;padding:40px 0}.thankyou.active{display:block}
+.thankyou .check-circle{width:80px;height:80px;border-radius:20px;background:var(--success-bg);border:2px solid var(--success);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:36px;color:var(--success);font-weight:800}
+.thankyou h2{font-size:28px;font-weight:800;color:var(--navy);margin-bottom:12px}
+.thankyou p{color:var(--text-sub);font-size:16px;line-height:1.7;max-width:440px;margin:0 auto 8px}
+.thankyou .next-box{background:var(--accent);border:1px solid var(--border);border-radius:12px;padding:18px 24px;max-width:380px;margin:24px auto;text-align:left}
+.thankyou .next-box h4{font-size:12px;font-weight:700;color:var(--gold-dark);letter-spacing:2px;margin-bottom:12px}
+.thankyou .next-box p{font-size:14px;color:var(--text-sub);line-height:2}
+.footer{text-align:center;margin-top:30px;padding-top:18px;border-top:1px solid var(--border)}
+.footer p{font-size:12px;color:var(--text-muted);margin-top:5px}
+.error-msg{color:#C0392B;font-size:13px;margin-top:16px;display:none}
 </style>
 </head>
 <body>
 <div class="container">
 
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('ar')">عربي</button>
+  </div>
+
   <!-- HEADER -->
   <div class="header" id="formHeader">
     <img src="data:image/jpeg;base64,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sRTRyzRyM3Xb3dkjmPhUh8uskXUEUZvVg5KQaa/xiJ3+ElbrsOFrPZo2ihpuSOnHiEH4eXuC4MP2uGAQxbzOnQar3AAHMNFhoDRoOZZQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBa8zZzoy9yxZyeJ70PTBzN+O3UjOWqXjo7kcGA9BeWg9a/P2oczzlZldU3ij5N14rHiktrHjUCVwJLyOkNaCdOk6DpVfmWGAsa52Y/qKShnfVVkrjU3K51sji2JpPF73cSSTwDRxPgAJASZvW3FZ4qots2XldWU/RJV3NlO8/FbHIPnSz7cVnlqGtu+XldSQdL6W5sqHD4ro4x86/cw1sVZfUlLCb9iLEN0q2j+EMD4qaFx8DNxzh467cQ7FuW9ZTS+k19xFa6ot0idJLFUQtPWWFgcfe3wg2PlVtA5Y5jVMVBZ706husvrLdcoxBM89TTqWPPga4nwLaqqwzyyexZlBf4ae8blTQ1Di6gudNqI5t3o62PHAlp+AkcVMLYfzgr8wMJ1eGcSVTqq+2RrC2pkOr6mmPBrnHpc0jdJ6dWk8SUEjUREBERAREQEREBERAREQEREBERAREQEREBERAREQF4POzNTD2UuHaS+Yjo7pVU1VVCljbQRRveHlrnakPewaaNPSveKL3oj/wCKSw/txv7mVB9Hbq5Wf8Axn/c6b/qE7dXKz/gGM/7nTf8AUKMey5k5Q5xX2826uvdTam26mZO18MLZC8ucW6HUjRb97R/D3u9un9xj/wAyD9/t1crP+AYz/udN/wBQvZYC2ncocXVcVFHfpbLWTO3Y4btByAJ/WAujHvF3Faordh20vi0o8xK2GTX10trbIPkEjfKtB597P+MMpGR3Gulp7tYppeSjuNKC3cceZsrDxYTodOLh4deCCzppDmhzSCCNQR0ooZ7AOblzq7hJlff6ySqgbTuns0krtXRBnr4NelundNHRukc2gEzEBERAXjc4sxrJlbg/8KMQUtxqqLsllPuUMbHybz9dDo97RpwPSvZLVe1Hlze80srzhfD9VbqWt7OhqN+ukeyPdYHajVjHHXiOhByyOzzwlm/W3Skw1br3SPtscckxuEMTA4PLgN3ckfr608+i2ko7bIeRmLcoLriGrxLcbJVsuUEEcIt80ry0sc8ne342aeuHNqpEoCIiAtNZx7R2CMrMXjDGILViKqrDSsqd+hp4Xx7ry4Aavlade5PQtyqvH0Qn8frP2NTf45EE7MtcYWzH2Cbdi2zwVcFDcGOfFHVsa2Voa4tO8GucOdp5iV6Jaj2O/wAm/CP6iX99ItuICIiAiIgIiICIiAiIghb6JdVVHZ2CaLV3Y/JVcunQX6xDyeVei9DZbbvwExS6Pk/TE3OMTc29yXJDk/g15T517rbRyruGZOW8NVYac1F8scrqingb66ojcNJI2/pcGuA6S3TpUDMtsfYxyvxQ+64arpLfWN/gaqnlj1jlAPGOWM8+h94jjoQgtpRQswltv1bWxRYswLBKdf4WotlYY9PeikDtfhkW28KbWeTd7DW1d2uNhlc7dEdxoXcT/Wi32geEkIPW7TWBKjMTJy8Yft9EyruujJ7cwvaw8sxwI0c4gDVu8NSRwJUfNkbJTNnLrOGC+Yiw8yitEtFPTVMrbhBJwcA5vcseSe6a3oUs8LYuwriqJ8uGsSWi8tYAX9hVkcxZr3waSW/Cv20HGZ/JxPk013Wk6deii3lztefhhmPZ8H+p72F6ZVzaTsr055Tk9TpvbnIDX3tR76lDWfzSb9W7yKn6kudfZsQ+mlrqpKStp5nPhnjOjo3akag9B8KCfGfG1bhrAV3qMOYZtwxJeadxjqZOX5OlpnjnaXAEvcDztGgHNvaghaVpttjMltU11ThrCUlPvd1HHDUMeR1BxmIB8O6tgbMuy5hubCdFi7MqilulxuMYqILdJI5kVPG7i0yBpBe8jiQToNdCCeK3HiDZ3yavVvdSTYFt1JqDuzUO9TyMOnOCwjXTqOo8CDzWRO09g7Mm4xWG40smG7/KdIaeomEkFQe9jl0HdfouA5+G8t9Kr/aQyjuOTWOoaWnrJ6m01YNRaq49zJo0jVjiNNJGHTiNNdQRproJv7IuZdRmXlLT1d0m5W92uTsK4PPPK5oBZKfC5pGvhDkG4HuaxjnvcGtaNSSdAB1qMWbO2JhLDdzmtODrRJiiohcWSVhn5CkDh3jtHOk0PUAD0OK/d28sZVuFslTbrdO+Cpv1W2he9h0cId0vkA98NDT4HFR52K8kLNmVXXHE2LYZKmx2yVsEVI15YKmcjeO+Rod1oLToCNS4cdAQQ+yfbXzOMrjBh3B7I9e5a+mqXED3xONfkXrsDbbj3VMUGNsGMbC4/wAJV2mc6s96GTn/APUHwqTUOU+V0VOIGZcYQ5MDTQ2anOvvks4nwlR82w9n7BNBl1ccd4PtUFiuFsLZamnptW09REXBp0j9axw1BG6ADxBB1BASbwPizD2NcOU+IcMXOG426o9bLHqC1w52uadC1w6QQCv21A/0OXEtdS5j3rCvLONBX241fJE8GyxPaA4dRLXkH3h1KeBIA1J0AQfjY0xTh/BuHqi/4mukFtt1OO7llPOehrQOLnHoaASVE7Hm22GVM1PgfBzZYmnSOsu0xG//APZj5h1d38AWmdrLNOvzOzPqaOinkfYLVO6ktlOzi2RwO66bQc7nkcP0d0desj8gNlHCVpw3R3jMW3G836oY2V1FLK4U9HrxDN1pG+7Q91vat15hw1Iaqtu2zmLHVsdccL4VqKYHu46eKoheR4HGV4HilSSyC2hsH5sP9LIopLJiFrC91tqZA7lQBqTFINOUA6Ro13OdNOK+nFWzhk5iC2vo3YNo7bIWkR1NuLqeWMkeuG6d12nU4OHgUBs0sI4gyTzfktlPcJWVdtmZWW2vj7kyRk6xv06DwII5tQRxCC1RfBiG9WnD1mqbzfLhT2+30rN+eoneGsYPf6+gDnJ4Bfj5UYqjxvlvYcVxtDDcqJksjBzMk00e34HBwUGtuPNesxfmHPgy21Tm2CwymJ7GO7moqhwe93XunVg6tHHpQbPzE217ZS1UtJgTCr7ixuobXXKUxMcQedsTRvFp59S5p8C8FT7a+ZbahrqjDeEZIde6YynqGOI/rGYgfIvabNGylZqvD1JizM6nnqpqyMTUtnEjomRRni10xaQ4uI0O6CAOnU8Bva77PmTVzoHUc2ALTCw8z6UOgkHhD2EH50Hj8i9qXB+YlzhsF3o34Zvk7tynimnElPUO6Gsl0bo4964DnABJUgFWntS5JVGTuJaOrtNZUVeHri4mhqJOEsEjeJieRoCRwIcNNRrw4FTG2P8AMuozIylgmuk5mvVok7BrnuPdS6AFkp8Lm856w5BuZERAUXvRH/xSWH9uN/cyqUKi96I/+KSw/txv7mVBrz0Nb+mmLv2dD+8KnIq2NkXN7DWUWIL7cMSUN3q4rhSRwxC3xRvc1zXlx3t97OGnVqpHdurlZ/wDGf8Ac6b/AKhBJlaq2uGUT9nTGHZ4YWCjaY9/ok5Rm5p4d7Ra3qttfLNsLjTYbxdLLp3LZKenY0++RMdPkUes+9oPFWc7aXC9vtDLPZn1DCyhimMstVLrozlH6NBGp1DQAAecnQEB+ZsYU9VPtI4WNKHfwT55JSBzMEEmuvg4gfCrNVHTY6yGqcs6KoxTikQnEtwhETII3B7aKEkEt3hwc9xA1I1A0ABPEmRaCOmf+096lOYUmEvwI9ONyliqOyfTXkNd8Hhu8i7m059V63FmfmFsJ5RWHHd/gfDV32ijqaKzwSiSaRzmhxaHEAbrdRq8gDwakAxG2/vyhaj9mUvkcvlyVytxjtB3aCpud19L8PWGkgtvZZj3txkbAGwws10LiO6cSdAXa8dQEG1Mv9rnGmMM2LDh2LDOH6C0XS4xUz2u5aWojY9wBIk32tJ8O58CkVtBZmepPl+cWeknpz/HIqbsbsrsf14d3W9uP5t3m0XjMD7KuWOEr9a77QzX6puNtqGVEMtRWNIc9p1G81rANPAvz/RBPyfz+16byPQfs7NGfnqzXG9Un4J+kXpXDFJvemPZPK75cNNOTZppu+HnW7VCT0NL+kWNf7JSf45FLDN3GVLl/lxesW1TRIKCnLooydOUlJ3Y2fC4gIPK56574LymgbTXSSS5XyWPfgtdKRyhHQ6Rx4RtJ6TqTx0B0KjFeNtrH8ta59nwphmjpT62OqE9RIPfe2SMHxQtM4Gw9irPDN9tDJWumul3ndUV1bKN4Qxji+QjXmaNAG8PzWjRT1wTsz5P4atcdNJhaC9VO4BLV3NxmfIevd13G/FaPhQasyl2zbZdrnT2rMGxRWblnBgudFI59Oxx7+N2rmN/SDneEAalak9EBlinz2gngkZLFJY6V7Hsdq1zS6QggjnBUic5tlPL/E1gqp8HWyPDd/jYX07qd7hTzOA4MfGSQ0Hm3m6EE6nXTRQCxHUXp1ay232WodU2mM29sU51dA2N7v4L3muLhp0c3MAgsp2O/wAm/CP6iX99ItszyxQQvnnkZFFG0ue97gGtaBqSSeYBam2O/wAm/CP6iX99ItSeiEZn1VqtdDltZ6l0Mlyi7KujmO0cYN4hkXvOc1xPgaBzEoP0M3NsfDdguE1qwLaPwkmiJY+vmlMVKHDvAAXSjn49yOokLWFBtsZisrWPr8MYUnpQ7u44YqiJ5HUHmVwB8O6V8eyHs70eZFJJjDGLqhmHYpjDS0kLyx1a9vriXji2MHh3OhJ14jTjLZuQOTTbf2CMvbLyW5ubxY4yafrNd/Xw66oPxsk9obCOZ9qrG0sElrv9HTPqJbVUSgmRrRqXRSAaPb0HgCOlumhPhModrb1QMyLNg71P/S30zmdH2V6ccryejHO13OQbr63TnHOtV7UWRj8naqjzGy3rKyktTKgRyxGQvkoJHahpa48XRu4tIdqdToSQ7hrLZD/KPwb/AGuT9zIgtBXn8wMaYawHhya/4qukNvoY+ALuL5XdDGNHFzj1D3+YFfvSyMiifLI8MYxpc5xOgAHOVWFtF5k3fODNWU0RnntkNR2FZKKMkgtLt0ODel8h0PwtHQEG78b7btR2TJDgnBcIhae4qbvMS548MUZG7/6hXm7Vts5hR1jH3TC2FqqlB7uOmZPA8jwPdI8DxSts5GbJeD7FZaa5Zh0gv19laJH0rpHClpT3ga0jlCOYl2reodJ2BirZvybxBbn0j8G0ltkLSI6m3OdTyRk/nDdO673nBw8CDpyF2g8GZru9LadstmxA1m+621Tw4yADUmJ40EgHvB3And04rcKq3zkwFiLIrNeGlpLlNvQObXWi5Rjcc9gdwPgc0gtcOb4CrE8jscw5jZX2XFjGsZPVQ7tXG3mjnYd2Ro8G8CR4CEHtVrrMvJLLPMOd9ZiTDNO64OHGupXOp5ydNNXOYRv6dG+HaLSWe+1NirLrNS8YQo8LWiqpqF0fJTTySB7w+Nr9TodPziPgUj8sMS/hjl3YMUmOOJ90oIqmSOM6tY9zRvNGvUdR8CCNuKtiLDc/dYXxtdbeeJLLhTR1QJ6ACzk9B8BWosXbIGbdma6W1R2fEMYJ0bRVnJybvWWzBg+AEqxJEFQ15suMMBX+Ft0t15w3dYXcpA+SOSmlGh0343cCR+k06eFTM2Ndoa54yuLcA45qG1F35Ivt1xIDXVQaNXRyAcC8AEh3SAdePE79ziwPZMwMAXPD97pIpmvge+mlc0b9PMGndkYegg/KNQeBVYeUNwqbLm1havpnObNT3im9ZxJHKtDgPfBI+FBbPWfzSb9W7yKpbLuzMxDmtYbHK0OirrxDBID0sdKA75tVbTWfzSb9W7yKrHIGphpNoPCM9QQIxfYQSesyaD5yEFqUbGxsaxjQ1rQA0DmAWURBGj0RO1Q1eTNuujmjlqC7xhjundkY8OHyhp+Ba49DVuMzMUYvtG87kZaKCp06A5jy3X5H/MtoeiGXGOlyLp6Jz9JK28QMaNecNa958gWr/Q1bdK/E+L7tuu5KKigptegue9zvIz50E0bvaLTd4mR3a10VwjjO8xtVA2UNPWA4HRatxFnjkdl1NPZxf7XBOx5MlHZ6QygPHAhxhaWB3DQhxB4LU23/AJsXSxQ0WXGH6ySkkr6bsm6TRO3XmEktZECOYO3XF3WABzErUOzhsz3bNKzNxRd7v6SYfdK5kBZFyk9VunRxaCQGNB1G8deIPc9KDfty208sYC9tFY8VVjh613Y0EbHfCZdR8i0zn3tW1OYeBq7B9mwp6T0lcWtqaqes5aR8bXB261gYA3UganV3DXh0rfNg2PMoLc8PrW3+89bayvDG/UtYfnXxbRGUmW2BdnfFlThbB9toKptPGG1RaZp2gzRggSyFzwD4Cg0J6Ht+P1/7Gqf8cam7nfepcO5QYsvUDi2eltNQ6Jw6HlhDT8pChF6Ht+P1/wCxqn/HGpjbUFNJV7PuNYYt7eFrkk7k8dGaOPzAoK/tlWyQYg2gcI0FXG2WBtaal7Xcx5JjpB87ArSVWPsaVcVJtI4TfM4NEks0QJP5zoJAPnIVnCAvBZkZO5cZi3anuuMcNi51tPDyEUvZk8JEepdu6RvaDxJ5+te9X4OJMaYOwzUxUuJMWWGyzys5SOK4XGKne9uum8A9wJGo01QfHbbJYMtsuKm34boTQ2q00lRUQwGaSXc0DpHd09znHjqedVc4DrbRU5n2e54wqgy1vusdTc5nxuk1j5QPkJa0Fx148ACeKtCxhW23FeU+IZsPXOjutLWWqrjgqKKds0cjuTe3Rrmkg8eHPzqrbLWwUuKcf2LDdbWPoqe510VK+djQ50e+4N1AJAPOgsRG1FkQAAMcgAcwFprfMp20eRPu5+ya3zK1b2j+Hvd7dP7jH/mTtH8Pe726f3GP/Mg+Xa3zmyfzEybq7Lh/FLa+8w1UFTRxG3VUZLmu0do58QaO4c/nIXlvQ3bzJT5g4ksJf/BVlsbUhuv50UgGvySFez7R/D3u9un9xj/zLYGQ+zZa8p8bvxRQ4qrrlI+jkpTBLTNjbo4tOuoJ5t0IN8IiICi96I/+KSw/txv7mVShUXvRH/xSWH9uN/cyoI47KWT1mzgv17t14utfbmW6ljmjdSBhLi55bod4HgpC9pJgf3YYi8WH/KvC+hrf00xd+zof3hU5EEVXbEeCd07uMMQg6cCWQkf4Vq3N3Y/xVhSyVN7wpeosTU1Mx0s1KaYwVTWDiSxu84SaDUni09QKn4iCuTZa2gL9l7iKhw/f7hPXYQqZGwyQzPLzQanQSRE8WtHOWc2mpA1VjTHNe0PaQ5rhqCOYhVNZ40VHbs5MYUNvY2OlhvNS2NjeZo5R3AeAcys9yiqamtyqwnV1hcaiazUj5C7nLjC3UlBBHb+/KFqP2ZS+Ryl3se2mmtGzthVtOxrXVcD6uYj858kjjqfg0HwKIm39+ULUfsyl8jlMzZa/J6wV+zGeUoNlqPPogn5P5/a9N5HqQyjz6IJ+T+f2vTeR6DVXoaX9Isa/2Sk/xyLYXoi1zmpMm7Xb4y4MrrzG2TQ8C1kcjgD8IB+Ba99DS/pFjX+yUn+ORbB9EYt8tTk5aa9gJbR3qMv06A+KRup+HT5UGvvQ1bVDJf8AGF7expmp6Wnpo3EcWh7nud8vJt+RTbUK/Q0rhG25Y0tTnHlHw0tQxuvOGmRrjp8ZvyqaiAqzttSxxWPaJxCIGBkVcIa0NA4ayRje+VwcfhVmKrq9EAqYZ9oKWOIgup7VTRyeB3dO8jgglzsd/k34R/US/vpFCPbKuctz2jcUmR5c2lkipYx3rWRMGny6qbmx3+TfhH9RL++kUItsq3SW7aOxUHs3W1MsNSzwh8LDr8uqCfmzvaYbJkdg23wxhgFpgleBpxfI0SOPwucV71eKyIr4rnkvg2thILH2alHDoLY2tI+Aghe1QeJz5skWIsmcXWmVgfytqnezUa6PYwvYffDmgqvTZD/KPwb/AGuT9zIrJcwJoqbAeIKiZ4ZHHbKlz3HoAidqq2tkP8o/Bv8Aa5P3MiCfu0veZbDkNjG4073MmFtfDG5vODLpHr9NV87L96whhvOezYhxvXtorVbhJOJHQSTDlgwiPuY2uPriDzcNFO7bGpJKzZwxayIEmOCKU6DXgyaNx+YKAuz3gCgzNzNpMIXC6zWyOpgmkbPFGHu3mN3tNCRzgFBPDto8ifdz9k1vmU7aPIn3c/ZNb5lat7R/D3u9un9xj/zJ2j+Hvd7dP7jH/mQeI23szssMysO4elwdiBtzutvq5GyN7BqISIHs4nWSNoPdMbwB14r3/obd5kqMC4osUkm82iuEdRG0n1olZofg1j+cr5+0fw97vbp/cY/8y21s75G0GTcl5dQYhq7s26CEPbNA2MR8nv6EaE6675+RBHn0RLAFXSYrt2YdHTvfQV0DaOue1uoimZruF3VvN4Dws8K+XY62ibZgm2NwHjmZ8Fm5Uvt9wDC8UpcdXRyAcdwk6hwB0JOvDiJu4lsdpxLYqyxX2hhr7dWRmOeCUate0/OCOcEcQQCFCvNrYzxDRVk9flxc4LrQuJcy310giqY+prZD3D+ni4s6OfnQTWsN7s1/t7LjYrtQ3Sjf62ekqGyxn4zSQvtlkjijdJK9sbGjVznHQAdZKqxueSucuH60B+AMTCdh4SUFK+oA958O8PnXWMqs575VMiqMCY0nk5murbfOxo+NIAB8qCaG0dtH4MwlhS42fC96pL5iWqhfBCyikEsVKXAtMkkjdW6t49wCXa6agDioi7JmCKzG+d9iijge+htdQy410uncsZE4OaCetzw1vwnqK9xlzseZkXyrjkxZLRYXoA7+ED5W1NS4fosjJb4zwR1FTUyjyzwplfhoWTC9E6NryHVNVMQ6epeB657tBr4AAAOgBB62s/mk36t3kVPIqqihvYrqSV0VRT1PKxSN52Pa7UEe8QFcNWfzSb9W7yKprLS10N7zdw/ZrnDy9FXXqCnqI94jfjfKGuGo4jgSgsd2e838P5rYPp6ulq4Ib7BE0XO3F4EkUg4F4bzmMniHDhx0PEELZVRNFTwPnnlZFFG0ue97g1rWjnJJ5gq+c19l3MnA2In3XAMdZfbWx5kpZ6GTcraYdDXMBDi4a6bzNddNSG8y8ZW4Q2jcXNjs93s2ZVygc4bsV0bV8gCOYkzaMHvkoPTba+btBmPjals2HakVFgse+yOoae4qp3ab8jetoADQenieYhSj2JcA1GCMmKepuMDoLnfZfTCdjxo5kZAETSOjuRvadBeVqzZz2Squ23elxRmiKYupnCWnssUglBeOIM7x3JAPHcaSDw1OmrTMYAAaAaAIK7vRA6Grps/XVU4dyFXa6d8B04aN3mEeM0n4VKLYkxLar5kFZbdRVERrLPylLWQAjfjdyjnNJHU5pBB9/qK/X2lMl7ZnBhaGn7IZb77b959urS3Vo103o5AOJY7Qc3EEAjXiDB+4ZN59Zc3101qw9ieGpGrGV2HnyTb7deh0B3gD1OAPgQWbuIa0ucQABqSehQ124c9bDc8Oy5a4QuENyfPK112rIHB0LGsdvCFrhwc7eALiNQNNOcnTVVFl7tPZix+ld0ixvLQvcBK2/V80EDRr64sncN7T9FpPgUhMrNkjD2HsH3aPE1bDdsS3O3y0jKhsZ7Ht5kYW6xA8XOBPrzodOADdTqGjfQ9vx+v/AGNU/wCONWB3u3U13s1baq1gfTVtO+nmaelj2lpHyFVoTZS575bYxEtlwzieO4U7nNhuFjgknje08NRJEDoCPzXaHTnCnxs6Q4wgyesjMeGvOISJX1fZ0m/NxleW7x1P5pbw6Bw4IK3cRWu/5R5uSUcjXQ3TD9xbLA9w0EgY4OjeOtrm6H3irMsocx8OZm4Qpr/h+sje5zGirpC4crSS6cWPbzjjroeYjiF5DaOyGw/m9bo6rlhasR0ke5S3BrN4Pbz8nK385uuuh52k6jUagwvvmQ+e2Xt3NXbLBeZJInFsVfh6Z0znjrbyR5Vo/rNagskvl2tljtNTdrxX09BQUrDJPUTvDGMaOkkqsbaNzAlzdzhqLraYJ5KMmO32mAtO++MEhp3e+e5xOn6QHQvrmy72iMfVUNFd7Bjy6OjOsRvjp2RsPWHVJDR8qk9sw7L8WA7nT4vxxPTXC/w91R0kBLoKN3flxA35B0cN1vHTU6EBuvJfCP4FZTYewpO1hlo6FrKkDmMru6k+Dec5Vw53YRueU+ddfQQtdAKStFfaptODoS/ficOvTTdPhaVagtbZ95O4bzdw4yguxdRXKl3jQXKJgdJTuPOCOG+w6DVuo5uBB4oO/IvNbDmamEae52qrhZc44mi428vHK00nMdW85YTruu5iPCCBsI8BqVWtjDZtzowNdnVdqs1TdYqd+tPcLJNvvPUQwEStOnP3OnUSvz6jD20piGD0nuFtzSraWYbroK9tbyBHU7lO4099BvzbUz+go6KLA+XuJJ2XRtQJLlcbZVuYacN10hbIwjuifXaHgBoeJIHo9guPHd2wxd8ZYxxNiC60tbI2mtkVxuE07d1hPKStD3EDVxDdf0XLVeTGx7ii53OC4ZlPjstrjdvPt8E7Zaqo0/NLmEsjaevUu6NBzicdltlvstppbTaqSKjoaSJsNPBE3RsbGjQABB9aIiAoveiP/iksP7cb+5lUoVobbXy+xfmLl3aLTg20emdbT3VtRLH2TFDux8lI3XWRzQeLhwB14oND+h2Xi02jGGK5LtdKG3skt8LWOqqhsQcRIeALiNVNL8NcG+62wf8A5GH/ADKuztXM9vcN9rUXnk7VzPb3Dfa1F55BYlJjjBUcbpJMYYeYxo1c51yhAA6z3S1TnVtNZfYLsNTHh290OJb/ACRkUlPQSiaFjiOD5JW9yGg87QS482g5xEPtXM9vcN9rUXnl67BWxtmZdp43YjrbRhylJ0k3puyZwOtrI+4PwvCDT+W+FL9mtmhS2anMtRW3SrM9dU6a8mwu3pZndQGpPhJA6Va5bKOC3W2lt9KzcgpoWQxN6mtAAHyBeFyTygwhlNZX0eHqd81bUAdmXGo0dPUEcw1HBrR0NHDr1PFbCQV0bf35QtR+zKXyOUzNlr8nrBX7MZ5So87X2R+aOPc45sQYTwx6Y211BBEJuz6aLV7Qd4bskjXcNepSZyEsN2wvk5hfD99pOxLlQ0DYqmHlGv3HgnhvNJafgJQe4UefRBPyfz+16byPUhlpvbDwTifH2T5sGErZ6ZXL0xgm5Hl44u4aHanekc1vSOGqDRHoaX9Isa/2Sk/xyKUuemC25g5U3/Cg3RUVdMXUrnczZ2EPjJ8G80A+AlaR2Hcp8f5b3nFFRjSwelcVdT07KZ3ZkE2+WueXD+Ce7TTUc+ilIgq42ese1OT+cdPc7rTzxUrHvt93py077Iy7R/c98xzQ7T9EjpVnGH7zasQWamvFkuFPcLfVMD4aiB4cx498fOOcKPm0/sy0uYtdLizCFRTWzEjx/GoZgWwV2g4OJA1ZJp+doQeGunOoqsy22hcAV0tNacPY5tssnGR9jM0jH9Wr6Ylp+VBYrmXjvDOXmGJ8QYnuMVJTxtPJRlw5WofpwjjbzucfBzc50AJVWWZ2Lq7HePrxi24N3J7jUmURg6iNnMxg/qtDR8C2lhLZ/wA78zL9FV4lo7vb4XENnueIZX8qxvgZIeVcdNdBoB1kc62BtA7MWLG1OGbTlhhl1ztdutXI1VU+tp4XzVBke573CSRpJOoPAaAaAcyCQ2x3+TfhH9RL++kWjfRGMA1Dqiz5jUMDnwtjFuuLmj1nEuiefAd5zdevdHSpE7NmGr3hDJPDmHcRUXYV0o4pG1EHKsk3CZXuHdMJaeBHMSva4jstrxFYqyx3qjirbdWxGGogkGoe0+Q9II4g8QgilsFZxWo4eZlfiCujpK6nlc+0STPDW1DHu1MIJ/PDiSB0g8OZS9Vf+cmyLjfD90nrcBRjElle4ujh5VrKuBvPuua4gSacwLTqe9C8LFYdpR1KLIy25qNoyOSFOWVzYNObTj3GnzIJMbcGdNosmDq7Lmw1sVXfbozka/kXhwooD65ryOZ7hw3ecAknThrGDZD/ACj8G/2uT9zIti4D2Wb/AG/CN/xnmWyO3Q2+1VVRSWxs7XyySticWvlc0lrWg6HdBJJ59NNDr3Y+idLtIYPDfzamVx94QSFBZTjCx0uJsKXXD1cNaa5UctLJ4A9pbr8Guqq5sFZfcl87KeprKYi5YcuW7UQngJWDg4A9T2E6HqcCrW1pTaT2fbHm3TtulLUMtGJ6ePchrdzejnYOaOZo4kdThxGvSOCDZGXeNsNY+w1T4gwxc4a2klaN9rXDlIH6cWSN52uHUffGo0K9BUTQ08Ek9RLHDDG0ufI9wa1rRzkk8AFWfeMjM+Mvrs6qtuHr4ZWOLI67D8zpi8dY5E8o0H9JrT4F0VGCdo7Gu5artZcxbnESC2O8GpbCCOY61BDB8qDZm2BtDVV5xRR2DLPFVyorfbN81VxtdbJAKuU6Dda5hG8xoHPzEkkcACZEbHdtxfT5PU13xte7zdLleZjWRemVZJO+GAgCNo3yS0EDf0/SWmsgNkKqpbpTYhzTfTFkDhJFZIJBIHuHNy7x3OgP5jSQek6agzKY1rGNYxoa1o0AA0AHUgyiIgIiICIiDqrP5pN+rd5FVNkv+PfCX/1DS/v2q1qqBdSygAklhAA95Vo5SZZ5j0OdGF6+ty/xZTUcF9p5ZZ5rNUMjjYJmkuc4s0AA46nggsyREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBRq2tc9cf5Q4ttNFYLRh+qtVxojKyWvp5nv5VryHt1ZK0aAFh5teKkqtc7QWVNqzbwK+xVkopLhTuM1urd3UwS6acR0scOBHw84CD8/ZgzX9VnLsXev7AgvlLO+G40tIHNZGdSY3BrnOduubpxJPEO6ltZVf3fA2dWSGJZLlT0N7tMkGrRdLbvSUsrNel7QWlp0B3HgHm1av0RtOZ8VTBRx4ykfI/uf4K1UnKHXoGkWuvvcUEuttfMK3YPycuVj7JZ6cYgiNHS04d3fJu4SyEdDQ3Ua9bgo2+h8YXnu2c0+ITETSWShkcX6cBLKNxg9/d5Q/AvLYWyYzszdxH6Z3a33hgnI5e738yRtDOcFvKd28dQYCB4Ap65H5YWLKnBMWHbOXVEz3crW1j26PqpiNC4joA5g3oHWdSQ92iIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiD/2Q==" alt="Space Bridge">
     <div class="tagline">SPACE BRIDGE TECHNOLOGIES CO.</div>
-    <h1>Premium Client Intake</h1>
-    <p>Thank you for contacting Space Bridge Technologies. Please complete the form below so we can match you with the right factories and pricing.</p>
-    <p class="note">We only process fully completed forms.</p>
+    <h1 data-i18n="title">Premium Client Intake</h1>
+    <p data-i18n="subtitle">Thank you for contacting Space Bridge Technologies. Please complete the form below so we can match you with the right factories and pricing.</p>
+    <p class="note" data-i18n="note">We only process fully completed forms.</p>
   </div>
 
   <!-- STEPS NAV -->
   <div class="steps" id="stepsNav">
-    <button class="step-btn active" onclick="goStage(0)"><div class="step-num">01</div><span class="step-label">Client</span></button>
-    <button class="step-btn" onclick="goStage(1)"><div class="step-num">02</div><span class="step-label">Product</span></button>
-    <button class="step-btn" onclick="goStage(2)"><div class="step-num">03</div><span class="step-label">Order</span></button>
-    <button class="step-btn" onclick="goStage(3)"><div class="step-num">04</div><span class="step-label">Logistics</span></button>
+    <button class="step-btn active" onclick="goStage(0)"><div class="step-num">01</div><span class="step-label" data-i18n="stepClient">Client</span></button>
+    <button class="step-btn" onclick="goStage(1)"><div class="step-num">02</div><span class="step-label" data-i18n="stepProduct">Product</span></button>
+    <button class="step-btn" onclick="goStage(2)"><div class="step-num">03</div><span class="step-label" data-i18n="stepOrder">Order</span></button>
+    <button class="step-btn" onclick="goStage(3)"><div class="step-num">04</div><span class="step-label" data-i18n="stepLogistics">Logistics</span></button>
   </div>
 
   <!-- STAGE HEADER -->
@@ -204,35 +109,85 @@ body {
 
   <!-- STAGE 0: CLIENT -->
   <div class="stage active" id="stage0">
-    <div class="field"><label>Full Name<span class="req">*</span></label><input id="clientName" placeholder="Your full name" required></div>
-    <div class="field"><label>Company</label><input id="company" placeholder="Your company or business name"></div>
+    <div class="field"><label data-i18n="lbl_name">Full Name<span class="req">*</span></label><input id="clientName" data-ph="ph_name" placeholder="Your full name" required></div>
+    <div class="field"><label data-i18n="lbl_company">Company</label><input id="company" data-ph="ph_company" placeholder="Your company or business name"></div>
     <div class="row2">
-      <div class="field"><label>Email<span class="req">*</span></label><input id="email" type="email" placeholder="email@company.com" required></div>
-      <div class="field"><label>Phone / WhatsApp</label><input id="phone" placeholder="+XXX XXX XXX"></div>
+      <div class="field"><label data-i18n="lbl_email">Email<span class="req">*</span></label><input id="email" type="email" data-ph="ph_email" placeholder="email@company.com" required></div>
+      <div class="field">
+        <label data-i18n="lbl_phone">Phone / WhatsApp</label>
+        <div class="phone-row">
+          <select id="phoneCode">
+            <option value="+962">🇯🇴 +962</option>
+            <option value="+966">🇸🇦 +966</option>
+            <option value="+971">🇦🇪 +971</option>
+            <option value="+973">🇧🇭 +973</option>
+            <option value="+974">🇶🇦 +974</option>
+            <option value="+965">🇰🇼 +965</option>
+            <option value="+968">🇴🇲 +968</option>
+            <option value="+970">🇵🇸 +970</option>
+            <option value="+961">🇱🇧 +961</option>
+            <option value="+963">🇸🇾 +963</option>
+            <option value="+964">🇮🇶 +964</option>
+            <option value="+20">🇪🇬 +20</option>
+            <option value="+212">🇲🇦 +212</option>
+            <option value="+213">🇩🇿 +213</option>
+            <option value="+216">🇹🇳 +216</option>
+            <option value="+218">🇱🇾 +218</option>
+            <option value="+249">🇸🇩 +249</option>
+            <option value="+90">🇹🇷 +90</option>
+            <option value="+86">🇨🇳 +86</option>
+            <option value="+1">🇺🇸 +1</option>
+            <option value="+44">🇬🇧 +44</option>
+            <option value="+49">🇩🇪 +49</option>
+            <option value="+33">🇫🇷 +33</option>
+            <option value="+39">🇮🇹 +39</option>
+            <option value="+34">🇪🇸 +34</option>
+            <option value="+31">🇳🇱 +31</option>
+            <option value="+46">🇸🇪 +46</option>
+            <option value="+47">🇳🇴 +47</option>
+            <option value="+91">🇮🇳 +91</option>
+            <option value="+92">🇵🇰 +92</option>
+            <option value="+60">🇲🇾 +60</option>
+            <option value="+62">🇮🇩 +62</option>
+            <option value="+63">🇵🇭 +63</option>
+            <option value="+81">🇯🇵 +81</option>
+            <option value="+82">🇰🇷 +82</option>
+            <option value="+55">🇧🇷 +55</option>
+            <option value="+52">🇲🇽 +52</option>
+            <option value="+27">🇿🇦 +27</option>
+            <option value="+234">🇳🇬 +234</option>
+            <option value="+254">🇰🇪 +254</option>
+            <option value="+61">🇦🇺 +61</option>
+            <option value="+64">🇳🇿 +64</option>
+            <option value="+7">🇷🇺 +7</option>
+          </select>
+          <input id="phone" data-ph="ph_phone" placeholder="XXX XXX XXXX">
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- STAGE 1: PRODUCT -->
   <div class="stage" id="stage1">
-    <div class="field"><label>1. Product Name<span class="req">*</span></label><div class="hint">To identify the correct industry and suppliers</div><input id="productName" placeholder="e.g. Solar LED Street Light 100W" required></div>
-    <div class="field"><label>2. Product Specifications<span class="req">*</span></label><div class="hint">Size, material, power, model — precise specs help us match the right factory</div><textarea id="specs" placeholder="e.g. 100W, 6000K, aluminum body, IP65, 12000 lumens..." required></textarea></div>
-    <div class="field"><label>Reference Photos / Links</label><div class="hint">Alibaba links, Amazon links, or photo descriptions</div><input id="referencePhotos" placeholder="https://..."></div>
+    <div class="field"><label data-i18n="lbl_product">1. Product Name<span class="req">*</span></label><div class="hint" data-i18n="hint_product">To identify the correct industry and suppliers</div><input id="productName" data-ph="ph_product" placeholder="e.g. Solar LED Street Light 100W" required></div>
+    <div class="field"><label data-i18n="lbl_specs">2. Product Specifications<span class="req">*</span></label><div class="hint" data-i18n="hint_specs">Size, material, power, model — precise specs help us match the right factory</div><textarea id="specs" data-ph="ph_specs" placeholder="e.g. 100W, 6000K, aluminum body, IP65, 12000 lumens..." required></textarea></div>
+    <div class="field"><label data-i18n="lbl_ref">Reference Photos / Links</label><div class="hint" data-i18n="hint_ref">Product reference URLs or photo descriptions</div><input id="referencePhotos" placeholder="https://..."></div>
   </div>
 
   <!-- STAGE 2: ORDER -->
   <div class="stage" id="stage2">
-    <div class="field"><label>3. Target Quantity<span class="req">*</span></label><div class="hint">Helps factories quote correctly and avoid unrealistic pricing</div><input id="quantity" placeholder="e.g. 500" required></div>
-    <div class="field"><label>4. Branding Requirements</label><div class="hint">Custom branding takes more manufacturing time and affects MOQ</div>
+    <div class="field"><label data-i18n="lbl_qty">3. Target Quantity<span class="req">*</span></label><div class="hint" data-i18n="hint_qty">Helps factories quote correctly and avoid unrealistic pricing</div><input id="quantity" data-ph="ph_qty" placeholder="e.g. 500" required></div>
+    <div class="field"><label data-i18n="lbl_brand">4. Branding Requirements</label><div class="hint" data-i18n="hint_brand">Custom branding takes more manufacturing time and affects MOQ</div>
       <div class="chips" id="brandingChips">
-        <span class="chip" onclick="selectChip(this,'branding')">Custom Logo / OEM</span>
-        <span class="chip" onclick="selectChip(this,'branding')">Standard Packaging</span>
-        <span class="chip" onclick="selectChip(this,'branding')">Both (Logo + Custom Box)</span>
-        <span class="chip" onclick="selectChip(this,'branding')">Undecided</span>
+        <span class="chip" data-i18n-chip="brandOEM" onclick="selectChip(this,'branding')">Custom Logo / OEM</span>
+        <span class="chip" data-i18n-chip="brandStd" onclick="selectChip(this,'branding')">Standard Packaging</span>
+        <span class="chip" data-i18n-chip="brandBoth" onclick="selectChip(this,'branding')">Both (Logo + Custom Box)</span>
+        <span class="chip" data-i18n-chip="brandUndecided" onclick="selectChip(this,'branding')">Undecided</span>
       </div>
       <input type="hidden" id="branding">
     </div>
-    <div class="field"><label>5. Target Price per Unit (USD)<span class="req">*</span></label><div class="hint">In China the same product can vary ±20% based on material quality</div><input id="targetPrice" type="number" step="0.01" placeholder="e.g. 45.00" required></div>
-    <div class="field"><label>6. Required Certifications</label><div class="hint">Ensures legal import and compliance in your market</div>
+    <div class="field"><label data-i18n="lbl_price">5. Target Price per Unit (USD)<span class="req">*</span></label><div class="hint" data-i18n="hint_price">In China the same product can vary ±20% based on material quality</div><input id="targetPrice" type="number" step="0.01" data-ph="ph_price" placeholder="e.g. 45.00" required></div>
+    <div class="field"><label data-i18n="lbl_certs">6. Required Certifications</label><div class="hint" data-i18n="hint_certs">Ensures legal import and compliance in your market</div>
       <div class="checks" id="certChecks">
         <span class="check-chip" onclick="toggleCheck(this)">CE</span>
         <span class="check-chip" onclick="toggleCheck(this)">RoHS</span>
@@ -242,87 +197,179 @@ body {
         <span class="check-chip" onclick="toggleCheck(this)">ISO 9001</span>
         <span class="check-chip" onclick="toggleCheck(this)">REACH</span>
         <span class="check-chip" onclick="toggleCheck(this)">GMP</span>
-        <span class="check-chip" onclick="toggleCheck(this)">Country-Specific</span>
-        <span class="check-chip" onclick="toggleCheck(this)">None Yet</span>
-        <span class="check-chip" onclick="toggleCheck(this)">Other</span>
+        <span class="check-chip" data-i18n-chip="certCountry" onclick="toggleCheck(this)">Country-Specific</span>
+        <span class="check-chip" data-i18n-chip="certNone" onclick="toggleCheck(this)">None Yet</span>
+        <span class="check-chip" id="certOtherChip" onclick="toggleCertOther(this)">Other</span>
       </div>
+      <input class="cert-other-input" id="certOtherText" data-ph="ph_certOther" placeholder="Specify certification (e.g. SASO, JAS)">
     </div>
   </div>
 
   <!-- STAGE 3: LOGISTICS -->
   <div class="stage" id="stage3">
-    <div class="field"><label>7. Order Timeline<span class="req">*</span></label><div class="hint">When you plan to place the order — prices change based on economy & logistics</div><input id="orderTimeline" placeholder="e.g. Within 2 weeks, Q2 2026" required></div>
-    <div class="field"><label>8. Delivery Deadline<span class="req">*</span></label><div class="hint">When goods should arrive at destination</div><input id="deliveryDeadline" placeholder="e.g. Before June 1, 2026" required></div>
-    <div class="field"><label>9. Shipping Destination<span class="req">*</span></label><div class="hint">City + Country for accurate freight quoting</div><input id="destination" placeholder="e.g. Amman, Jordan" required></div>
-    <div class="field"><label>Additional Notes</label><div class="hint">Special requirements, past experiences, or anything else</div><textarea id="additionalNotes" placeholder="Any other details..."></textarea></div>
+    <div class="field"><label data-i18n="lbl_timeline">7. Order Timeline<span class="req">*</span></label><div class="hint" data-i18n="hint_timeline">When you plan to place the order — prices change based on economy & logistics</div><input id="orderTimeline" data-ph="ph_timeline" placeholder="e.g. Within 2 weeks, Q2 2026" required></div>
+    <div class="field"><label data-i18n="lbl_deadline">8. Delivery Deadline<span class="req">*</span></label><div class="hint" data-i18n="hint_deadline">When goods should arrive at destination</div><input id="deliveryDeadline" type="date" required></div>
+    <div class="field"><label data-i18n="lbl_dest">9. Shipping Destination<span class="req">*</span></label><div class="hint" data-i18n="hint_dest">City + Country for accurate freight quoting</div><input id="destination" data-ph="ph_dest" placeholder="e.g. Amman, Jordan" required></div>
+    <div class="field"><label data-i18n="lbl_notes">Additional Notes</label><div class="hint" data-i18n="hint_notes">Special requirements, past experiences, or anything else</div><textarea id="additionalNotes" data-ph="ph_notes" placeholder="Any other details..."></textarea></div>
   </div>
 
   <!-- ERROR -->
-  <div class="error-msg" id="errorMsg">Please fill in all required fields before continuing.</div>
+  <div class="error-msg" id="errorMsg" data-i18n="errorMsg">Please fill in all required fields before continuing.</div>
 
   <!-- NAVIGATION -->
   <div class="nav" id="formNav">
-    <button class="btn-outline" id="btnBack" onclick="prevStage()" style="display:none">← Back</button>
+    <button class="btn-outline" id="btnBack" onclick="prevStage()" style="display:none" data-i18n="btnBack">← Back</button>
     <div class="spacer"></div>
-    <button class="btn-primary" id="btnNext" onclick="nextStage()">Continue →</button>
-    <button class="btn-gold" id="btnSubmit" onclick="submitForm()" style="display:none">Submit Intake Form</button>
+    <button class="btn-primary" id="btnNext" onclick="nextStage()" data-i18n="btnNext">Continue →</button>
+    <button class="btn-gold" id="btnSubmit" onclick="submitForm()" style="display:none" data-i18n="btnSubmit">Submit Intake Form</button>
   </div>
 
   <!-- THANK YOU -->
   <div class="thankyou" id="thankyou">
     <div class="check-circle">✓</div>
-    <h2>Thank You!</h2>
-    <p>Your intake form has been submitted successfully.</p>
-    <p style="color:var(--text-muted);font-size:14px;margin-bottom:24px">Our team will review your request within <strong style="color:var(--navy)">3-5 working days</strong> and get back to you with a feasibility assessment.</p>
+    <h2 data-i18n="tyTitle">Thank You!</h2>
+    <p data-i18n="tyMsg">Your intake form has been submitted successfully.</p>
+    <p style="color:var(--text-muted);font-size:14px;margin-bottom:24px" data-i18n="tyReview">Our team will review your request within <strong style="color:var(--navy)">3-5 working days</strong> and get back to you.</p>
     <div class="next-box">
-      <h4>WHAT HAPPENS NEXT</h4>
-      <p>1. Feasibility review by our team<br>2. Master Service Agreement (MSA)<br>3. Engagement deposit confirmation<br>4. Factory matching begins</p>
+      <h4 data-i18n="tyNextTitle">WHAT HAPPENS NEXT</h4>
+      <p data-i18n="tyNextSteps">1. Feasibility review by our team<br>2. Master Service Agreement (MSA)<br>3. Engagement deposit confirmation<br>4. Factory matching begins</p>
     </div>
   </div>
 
   <!-- FOOTER -->
   <div class="footer">
-    <p>Your trusted bridge to world-class manufacturing in China</p>
+    <p data-i18n="footerTag">Your trusted bridge to world-class manufacturing in China</p>
     <p>www.spacebridgeco.com · business@spacebridgeco.com · +86 18666 550 167</p>
   </div>
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════════════
-// PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW
-// ═══════════════════════════════════════════════════════════════
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwShSUTzxE9HrOuA8VgyHMwMj-6UoUYpLjfGA2AwYEA6DDVP0hXbGauePyMA9TI9Omv/exec";
-// ═══════════════════════════════════════════════════════════════
 
+// ═══ TRANSLATIONS ═══
+const i18n = {
+  en: {
+    title: "Premium Client Intake",
+    subtitle: "Thank you for contacting Space Bridge Technologies. Please complete the form below so we can match you with the right factories and pricing.",
+    note: "We only process fully completed forms.",
+    stepClient: "Client", stepProduct: "Product", stepOrder: "Order", stepLogistics: "Logistics",
+    stageNames: ["Client Details", "Product Details", "Order Details", "Logistics Details"],
+    stepOf: "Step {n} of 4",
+    lbl_name: "Full Name<span class='req'>*</span>", lbl_company: "Company",
+    lbl_email: "Email<span class='req'>*</span>", lbl_phone: "Phone / WhatsApp",
+    lbl_product: "1. Product Name<span class='req'>*</span>", hint_product: "To identify the correct industry and suppliers",
+    lbl_specs: "2. Product Specifications<span class='req'>*</span>", hint_specs: "Size, material, power, model — precise specs help us match the right factory",
+    lbl_ref: "Reference Photos / Links", hint_ref: "Product reference URLs or photo descriptions",
+    lbl_qty: "3. Target Quantity<span class='req'>*</span>", hint_qty: "Helps factories quote correctly and avoid unrealistic pricing",
+    lbl_brand: "4. Branding Requirements", hint_brand: "Custom branding takes more manufacturing time and affects MOQ",
+    lbl_price: "5. Target Price per Unit (USD)<span class='req'>*</span>", hint_price: "In China the same product can vary ±20% based on material quality",
+    lbl_certs: "6. Required Certifications", hint_certs: "Ensures legal import and compliance in your market",
+    lbl_timeline: "7. Order Timeline<span class='req'>*</span>", hint_timeline: "When you plan to place the order — prices change based on economy & logistics",
+    lbl_deadline: "8. Delivery Deadline<span class='req'>*</span>", hint_deadline: "When goods should arrive at destination",
+    lbl_dest: "9. Shipping Destination<span class='req'>*</span>", hint_dest: "City + Country for accurate freight quoting",
+    lbl_notes: "Additional Notes", hint_notes: "Special requirements, past experiences, or anything else",
+    brandOEM: "Custom Logo / OEM", brandStd: "Standard Packaging", brandBoth: "Both (Logo + Custom Box)", brandUndecided: "Undecided",
+    certCountry: "Country-Specific", certNone: "None Yet",
+    errorMsg: "Please fill in all required fields before continuing.",
+    btnBack: "← Back", btnNext: "Continue →", btnSubmit: "Submit Intake Form", btnSubmitting: "Submitting...",
+    tyTitle: "Thank You!", tyMsg: "Your intake form has been submitted successfully.",
+    tyReview: "Our team will review your request within <strong style='color:var(--navy)'>3-5 working days</strong> and get back to you.",
+    tyNextTitle: "WHAT HAPPENS NEXT",
+    tyNextSteps: "1. Feasibility review by our team<br>2. Master Service Agreement (MSA)<br>3. Engagement deposit confirmation<br>4. Factory matching begins",
+    footerTag: "Your trusted bridge to world-class manufacturing in China",
+    ph_name: "Your full name", ph_company: "Your company or business name", ph_email: "email@company.com", ph_phone: "XXX XXX XXXX",
+    ph_product: "e.g. Solar LED Street Light 100W", ph_specs: "e.g. 100W, 6000K, aluminum body, IP65, 12000 lumens...",
+    ph_qty: "e.g. 500", ph_price: "e.g. 45.00",
+    ph_timeline: "e.g. Within 2 weeks, Q2 2026", ph_dest: "e.g. Amman, Jordan", ph_notes: "Any other details...",
+    ph_certOther: "Specify certification (e.g. SASO, JAS)"
+  },
+  ar: {
+    title: "نموذج استقبال العملاء",
+    subtitle: "شكراً لتواصلكم مع شركة سبيس بريدج للتكنولوجيا. يرجى تعبئة النموذج التالي حتى نتمكن من مطابقتكم مع المصانع والأسعار المناسبة.",
+    note: "نقوم بمعالجة النماذج المكتملة فقط.",
+    stepClient: "العميل", stepProduct: "المنتج", stepOrder: "الطلب", stepLogistics: "الشحن",
+    stageNames: ["بيانات العميل", "تفاصيل المنتج", "تفاصيل الطلب", "تفاصيل الشحن"],
+    stepOf: "الخطوة {n} من 4",
+    lbl_name: "الاسم الكامل<span class='req'>*</span>", lbl_company: "الشركة",
+    lbl_email: "البريد الإلكتروني<span class='req'>*</span>", lbl_phone: "الهاتف / واتساب",
+    lbl_product: "1. اسم المنتج<span class='req'>*</span>", hint_product: "لتحديد الصناعة والموردين المناسبين",
+    lbl_specs: "2. مواصفات المنتج<span class='req'>*</span>", hint_specs: "الحجم، المادة، الطاقة، الموديل — المواصفات الدقيقة تساعدنا في مطابقة المصنع المناسب",
+    lbl_ref: "صور مرجعية / روابط", hint_ref: "روابط مرجعية للمنتج أو وصف الصور",
+    lbl_qty: "3. الكمية المطلوبة<span class='req'>*</span>", hint_qty: "يساعد المصانع على تقديم أسعار دقيقة وواقعية",
+    lbl_brand: "4. متطلبات العلامة التجارية", hint_brand: "العلامة التجارية المخصصة تأخذ وقت تصنيع أطول وتؤثر على الحد الأدنى للطلب",
+    lbl_price: "5. السعر المستهدف للوحدة (دولار)<span class='req'>*</span>", hint_price: "في الصين نفس المنتج يمكن أن يختلف ±20% حسب جودة المواد الخام",
+    lbl_certs: "6. الشهادات المطلوبة", hint_certs: "لضمان الاستيراد القانوني والامتثال في سوقكم",
+    lbl_timeline: "7. الجدول الزمني للطلب<span class='req'>*</span>", hint_timeline: "متى تخطط لتقديم الطلب — الأسعار تتغير حسب الاقتصاد والشحن",
+    lbl_deadline: "8. الموعد النهائي للتسليم<span class='req'>*</span>", hint_deadline: "متى يجب أن تصل البضاعة إلى وجهتك",
+    lbl_dest: "9. وجهة الشحن<span class='req'>*</span>", hint_dest: "المدينة + الدولة لتقدير تكلفة الشحن بدقة",
+    lbl_notes: "ملاحظات إضافية", hint_notes: "متطلبات خاصة، تجارب سابقة، أو أي شيء آخر",
+    brandOEM: "شعار مخصص / OEM", brandStd: "تغليف قياسي", brandBoth: "كلاهما (شعار + صندوق مخصص)", brandUndecided: "لم أقرر بعد",
+    certCountry: "خاص بالدولة", certNone: "لا يوجد حالياً",
+    errorMsg: "يرجى تعبئة جميع الحقول المطلوبة قبل المتابعة.",
+    btnBack: "رجوع →", btnNext: "← متابعة", btnSubmit: "إرسال النموذج", btnSubmitting: "جاري الإرسال...",
+    tyTitle: "!شكراً لك", tyMsg: "تم إرسال نموذج الاستقبال بنجاح.",
+    tyReview: "سيقوم فريقنا بمراجعة طلبك خلال <strong style='color:var(--navy)'>3-5 أيام عمل</strong> والرد عليك.",
+    tyNextTitle: "الخطوات القادمة",
+    tyNextSteps: "1. مراجعة الجدوى من فريقنا<br>2. اتفاقية الخدمة الرئيسية<br>3. تأكيد العربون<br>4. بدء مطابقة المصانع",
+    footerTag: "جسرك الموثوق للتصنيع العالمي من الصين",
+    ph_name: "اسمك الكامل", ph_company: "اسم شركتك", ph_email: "email@company.com", ph_phone: "XXX XXX XXXX",
+    ph_product: "مثال: مصباح شارع LED بالطاقة الشمسية 100 واط", ph_specs: "مثال: 100 واط، 6000 كلفن، جسم ألمنيوم، IP65...",
+    ph_qty: "مثال: 500", ph_price: "مثال: 45.00",
+    ph_timeline: "مثال: خلال أسبوعين", ph_dest: "مثال: عمّان، الأردن", ph_notes: "أي تفاصيل إضافية...",
+    ph_certOther: "حدد الشهادة (مثال: SASO, JAS)"
+  }
+};
+
+let currentLang = "en";
 let currentStage = 0;
-const stageNames = ["Client Details", "Product Details", "Order Details", "Logistics Details"];
-const stageNums = ["01", "02", "03", "04"];
 
-function goStage(n) {
-  currentStage = n;
+function setLang(lang) {
+  currentLang = lang;
+  const t = i18n[lang];
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  document.documentElement.lang = lang;
+
+  // Toggle button active
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+  // Translate all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.innerHTML = t[key];
+  });
+
+  // Translate chips
+  document.querySelectorAll('[data-i18n-chip]').forEach(el => {
+    const key = el.getAttribute('data-i18n-chip');
+    if (t[key]) el.textContent = t[key];
+  });
+
+  // Translate placeholders
+  document.querySelectorAll('[data-ph]').forEach(el => {
+    const key = el.getAttribute('data-ph');
+    if (t[key]) el.placeholder = t[key];
+  });
+
   updateUI();
 }
 
-function nextStage() {
-  if (!validateStage()) return;
-  if (currentStage < 3) { currentStage++; updateUI(); }
-}
-
-function prevStage() {
-  if (currentStage > 0) { currentStage--; updateUI(); }
-}
+function goStage(n) { currentStage = n; updateUI(); }
+function nextStage() { if (!validateStage()) return; if (currentStage < 3) { currentStage++; updateUI(); } }
+function prevStage() { if (currentStage > 0) { currentStage--; updateUI(); } }
 
 function updateUI() {
+  const t = i18n[currentLang];
   document.querySelectorAll('.stage').forEach((s, i) => s.classList.toggle('active', i === currentStage));
   document.querySelectorAll('.step-btn').forEach((b, i) => {
     b.classList.remove('active', 'done');
     if (i === currentStage) b.classList.add('active');
     else if (i < currentStage) b.classList.add('done');
-    b.querySelector('.step-num').textContent = i < currentStage ? '✓' : stageNums[i];
+    b.querySelector('.step-num').textContent = i < currentStage ? '✓' : ['01','02','03','04'][i];
   });
-  document.getElementById('stageIcon').textContent = stageNums[currentStage];
-  document.getElementById('stageStep').textContent = `Step ${currentStage + 1} of 4`;
-  document.getElementById('stageTitle').textContent = stageNames[currentStage];
+  document.getElementById('stageIcon').textContent = ['01','02','03','04'][currentStage];
+  document.getElementById('stageStep').textContent = t.stepOf.replace('{n}', currentStage + 1);
+  document.getElementById('stageTitle').textContent = t.stageNames[currentStage];
   document.getElementById('btnBack').style.display = currentStage > 0 ? '' : 'none';
   document.getElementById('btnNext').style.display = currentStage < 3 ? '' : 'none';
   document.getElementById('btnSubmit').style.display = currentStage === 3 ? '' : 'none';
@@ -331,18 +378,8 @@ function updateUI() {
 }
 
 function validateStage() {
-  const required = {
-    0: ['clientName', 'email'],
-    1: ['productName', 'specs'],
-    2: ['quantity', 'targetPrice'],
-    3: ['orderTimeline', 'deliveryDeadline', 'destination']
-  };
-  for (const id of required[currentStage]) {
-    if (!document.getElementById(id).value.trim()) {
-      document.getElementById('errorMsg').style.display = 'block';
-      return false;
-    }
-  }
+  const req = { 0:['clientName','email'], 1:['productName','specs'], 2:['quantity','targetPrice'], 3:['orderTimeline','deliveryDeadline','destination'] };
+  for (const id of req[currentStage]) { if (!document.getElementById(id).value.trim()) { document.getElementById('errorMsg').style.display = 'block'; return false; } }
   document.getElementById('errorMsg').style.display = 'none';
   return true;
 }
@@ -353,26 +390,44 @@ function selectChip(el, hiddenId) {
   document.getElementById(hiddenId).value = el.textContent;
 }
 
-function toggleCheck(el) {
+function toggleCheck(el) { el.classList.toggle('on'); }
+
+function toggleCertOther(el) {
   el.classList.toggle('on');
+  const input = document.getElementById('certOtherText');
+  input.classList.toggle('visible', el.classList.contains('on'));
+  if (!el.classList.contains('on')) input.value = '';
 }
 
 function getChecked() {
-  return Array.from(document.querySelectorAll('.check-chip.on')).map(c => c.textContent).join(', ');
+  let certs = Array.from(document.querySelectorAll('.check-chip.on')).map(c => c.textContent).filter(t => t !== 'Other');
+  const otherVal = document.getElementById('certOtherText').value.trim();
+  if (document.getElementById('certOtherChip').classList.contains('on') && otherVal) certs.push('Other: ' + otherVal);
+  return certs.join(', ');
 }
+
+// Set min date for delivery deadline to today
+document.addEventListener('DOMContentLoaded', function() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('deliveryDeadline').setAttribute('min', today);
+});
 
 async function submitForm() {
   if (!validateStage()) return;
-
+  const t = i18n[currentLang];
   const btn = document.getElementById('btnSubmit');
   btn.disabled = true;
-  btn.textContent = 'Submitting...';
+  btn.textContent = t.btnSubmitting;
+
+  const phoneCode = document.getElementById('phoneCode').value;
+  const phoneNum = document.getElementById('phone').value.trim();
+  const fullPhone = phoneNum ? phoneCode + ' ' + phoneNum : '';
 
   const data = {
     clientName: document.getElementById('clientName').value,
     company: document.getElementById('company').value,
     email: document.getElementById('email').value,
-    phone: document.getElementById('phone').value,
+    phone: fullPhone,
     productName: document.getElementById('productName').value,
     specs: document.getElementById('specs').value,
     referencePhotos: document.getElementById('referencePhotos').value,
@@ -387,14 +442,7 @@ async function submitForm() {
   };
 
   try {
-    await fetch(GOOGLE_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-
-    // Show thank you
+    await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
     document.getElementById('formHeader').style.display = 'none';
     document.getElementById('stepsNav').style.display = 'none';
     document.getElementById('stageHeader').style.display = 'none';
@@ -404,8 +452,8 @@ async function submitForm() {
     document.getElementById('thankyou').classList.add('active');
   } catch (err) {
     btn.disabled = false;
-    btn.textContent = 'Submit Intake Form';
-    alert('Something went wrong. Please try again or contact us directly at business@spacebridgeco.com');
+    btn.textContent = t.btnSubmit;
+    alert('Something went wrong. Please try again or contact us at business@spacebridgeco.com');
   }
 }
 </script>
